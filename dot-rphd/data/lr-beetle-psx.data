@@ -1,0 +1,4 @@
+save_extensions=(
+    "srm"
+    "1.mcr" # memory card 2
+)

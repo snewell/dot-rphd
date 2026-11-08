@@ -1,0 +1,16 @@
+[ -e ~/.rph.d/common.rc ] && source ~/.rph.d/common.rc
+
+umc_args=(
+    "--save-dir"
+    "${ROOT_SAVE_PATH}/ps2"
+)
+
+pcsx2_args=(
+    "-fullscreen"
+    # "-nofullscreen"
+)
+
+orch_args=(
+	# "--dry-run"
+)
+
