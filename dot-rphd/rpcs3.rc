@@ -3,9 +3,10 @@
 # export QT_QPA_PLATFORM=xcb
 # export RADV_DEBUG=nocache
 
+[ -e ~/.rph.d/common.rc ] && source ~/.rph.d/common.rc
+
 sp3d_args=(
-    "-m"
-    "/mnt/ps3-disc/"
+    -m "${GLOBAL_SCRATCH_PAD}"
 )
 
 rpcs3_args=(

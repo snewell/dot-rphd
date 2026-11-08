@@ -1,3 +1,7 @@
+[ -e ~/.rph.d/common.rc ] && source ~/.rph.d/common.rc
+
+# Bug in systemd that ships on Ubuntu 24.04 causes random dolphin crashes - https://github.com/systemd/systemd/issues/35288
+# I have a fixed version built locally, so try and use that using LD_LIBRARY_PATH and avoid the crash.
 WORKING_SYSTEMD_DIR="/home/pi/systemd/systemd-260.1/build"
 
 if [ -d "${WORKING_SYSTEMD_DIR}" ]; then
