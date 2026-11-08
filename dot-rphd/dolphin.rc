@@ -1,8 +1,8 @@
 WORKING_SYSTEMD_DIR="/home/pi/systemd/systemd-260.1/build"
 
 if [ -d "${WORKING_SYSTEMD_DIR}" ]; then
-	echo "overriding systemd"
-	export LD_LIBRARY_PATH="${WORKING_SYSTEMD_DIR}"
+    echo "overriding systemd"
+    export LD_LIBRARY_PATH="${WORKING_SYSTEMD_DIR}"
 else
-	echo "Cannot override systemd"
+    echo "Cannot override systemd" >&2
 fi

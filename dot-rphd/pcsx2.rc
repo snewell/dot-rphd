@@ -9,8 +9,3 @@ pcsx2_args=(
     "-fullscreen"
     # "-nofullscreen"
 )
-
-orch_args=(
-	# "--dry-run"
-)
-

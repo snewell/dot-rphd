@@ -1,36 +1,31 @@
 [ -e ~/.rph.d/common.rc ] && source ~/.rph.d/common.rc
 
 spi_args+=(
-    "--root-save-dir"
     # Saves will be in a per-system folder under this path
-    "${ROOT_SAVE_PATH}"
+    --root-save-dir "${ROOT_SAVE_PATH}"
 )
 
+# if enabled via metadata, let's set up shared data
+# TODO: Consdier basic sanity-checking.  It'd be strange to support shared save
+# data for SNES for example.
 if [ -v rom_metadata[shared_save] ]; then
-	if [ -e ~/".rph.d/data/${EMULATOR_ID}.data" ]; then
-		. ~/".rph.d/data/${EMULATOR_ID}.data"
-		sras_args+=(
-			--work-dir "${GLOBAL_SCRATCH_PAD}"
-			--true-save-dir "${ROOT_SAVE_PATH}/${SYSTEM}"
-			--shared-base-name "${rom_metadata[shared_save]}"
-			--expected-base-name "${ROM%.*}"
-		)
-		for e in "${save_extensions[@]}"; do
-			sras_args+=(
-				--save-extension "${e}"
-			)
-		done
-		# we have a shared memory card, so disable the savepath-injector
-		orch_args+=(
-			"--savepath-injector" "disable"
-		)
-	fi
+    if [ ${#save_extensions[@]} -ne 0 ]; then
+        sras_args+=(
+            --work-dir "${GLOBAL_SCRATCH_PAD}"
+            --true-save-dir "${ROOT_SAVE_PATH}/${SYSTEM}"
+            --shared-base-name "${rom_metadata[shared_save]}"
+            --expected-base-name "${ROM%.*}"
+        )
+        for e in "${save_extensions[@]}"; do
+            sras_args+=(
+                --save-extension "${e}"
+            )
+        done
+        # we have a shared memory card, so disable the savepath-injector
+        orch_args+=(
+            "--savepath-injector" "disable"
+        )
+    else
+        echo "save_extensions not defined" >&2
+    fi
 fi
-
-orch_args+=(
-	# "--savepath-injector" "disable"
-	# "--lock-file"
-	# "/dev/shm/pcsx2.lock"
-	# "--dry-run"
-)
-

@@ -4,3 +4,6 @@
 # -----------------------------------------------------------------------------
 ROOT_SAVE_PATH="${HOME}/saves"
 GLOBAL_SCRATCH_PAD="/mnt/scratch"
+
+# load emulator-specific settings if they exist
+[ -e "${HOME}/.rph.d/data/${EMULATOR_ID}.rc" ] && . "${HOME}/.rph.d/data/${EMULATOR_ID}.rc"

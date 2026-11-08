@@ -11,8 +11,3 @@ sp3d_args=(
 rpcs3_args=(
     "--no-gui"
 )
-
-orch_args=(
-	# "--dry-run"
-)
-
