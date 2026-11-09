@@ -1,11 +1,17 @@
 [ -e ~/.rph.d/common.rc ] && source ~/.rph.d/common.rc
 
 umc_args=(
-    "--save-dir"
-    "${ROOT_SAVE_PATH}/ps2"
+    --save-dir "${ROOT_SAVE_PATH}/ps2"
+    --memcard-path "${HOME}/RetroPie/roms/ps2/Slot 1/Mcd001.ps2"
 )
 
 pcsx2_args=(
     "-fullscreen"
     # "-nofullscreen"
 )
+
+if [ -v rom_metadata[shared_save] ]; then
+    umc_args+=(
+        --card-name "${rom_metadata[shared_save]}"
+    )
+fi
