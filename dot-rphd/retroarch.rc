@@ -14,7 +14,7 @@ if [ -v rom_metadata[shared_save] ]; then
             --work-dir "${GLOBAL_SCRATCH_PAD}"
             --true-save-dir "${ROOT_SAVE_PATH}/${SYSTEM}"
             --shared-base-name "${rom_metadata[shared_save]}"
-            --expected-base-name "${ROM%.*}"
+            --expected-name "${ROM}"
         )
         for e in "${save_extensions[@]}"; do
             sras_args+=(

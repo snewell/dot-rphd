@@ -6,7 +6,7 @@
 [ -e ~/.rph.d/common.rc ] && source ~/.rph.d/common.rc
 
 sp3d_args=(
-    -m "${GLOBAL_SCRATCH_PAD}"
+    --work-dir "${GLOBAL_SCRATCH_PAD}"
 )
 
 rpcs3_args=(
